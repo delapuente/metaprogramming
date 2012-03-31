@@ -9,7 +9,7 @@ Please, feel free to do whatever you want with my code.
 
  * [Python examples](https://github.com/lodr/metaprogramming/tree/master/python) - explained in [Metaprogramación en Python](http://unoyunodiez.com/2012/03/31/metaprogramacion-en-python/)
 
-### Change log
+## Change log
 
-## 2012/03/31
+### 2012/03/31
  * Python examples
