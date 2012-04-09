@@ -1,10 +1,55 @@
 <!DOCTYPE HTML>
 <html>
     <head>
+        <link rel="stylesheet" href="http://code.jquery.com/qunit/git/qunit.css" type="text/css" media="screen" />
+    </head>
+    <body>
+        <h1 id="qunit-header">metaprogramming in JavaScript</h1>
+        <h2 id="qunit-banner"></h2>
+        <div id="qunit-testrunner-toolbar"></div>
+        <h2 id="qunit-userAgent"></h2>
+        <ol id="qunit-tests"></ol>
+
+        <script src="http://code.jquery.com/jquery-latest.js" type="text/javascript" language="javascript" charset="utf-8" ></script>
+        <script src="http://code.jquery.com/qunit/git/qunit.js" type="text/javascript" language="javascript" charset="utf-8"></script>
+
         <script src="method_missing.js" type="text/javascript" language="javascript" charset="utf-8" ></script>
         <script src="http.js" type="text/javascript" language="javascript" charset="utf-8"></script>
         <script src="companies.js" type="text/javascript" language="javascript" charset="utf-8"></script>
-    </head>
-    <body>
+        <script type="text/javascript" language="javascript" charset="utf-8" >
+            $(document).ready(function() {
+                var yours;
+                test("Building YourCompany object ( yours = new YourCompany(); )", function() {
+                    yours = new YourCompany();
+                    ok(yours instanceof YourCompany, 'Object should be an instance of YourCompany');
+                });
+                test("Accessing employees() (default method: yours.employees(); )", function() {
+                    var r = yours.employees();
+                    equal(r, 'GET yourcompany.com/employees');
+                });
+                test("Accessing employees() (alternative method: yours.dot('employees'); )", function() {
+                    var r = yours.dot('employees');
+                    equal(r, 'GET yourcompany.com/employees');
+                });
+                test("Accessing inexistent customers() (default method: yours.customer(); )", function() {
+                    raises(function(){
+                        var r = yours.customer();
+                    }, TypeError);
+                });
+                test("Accessing inexistent customers() (alternative method: yours.dot('customer'); )", function() {
+                    var r = yours.dot('customers');
+                    equal(r, 'GET yourcompany.com/customers');
+                });
+                test("Accessing object\'s url", function() {
+                    var r = yours.url;
+                    equal(r, 'yourcompany.com');
+                });
+                test("Accessing object\'s url via dot()", function() {
+                    raises(function(){
+                        var r = yours.dot('url');
+                    }, TypeError);
+                });
+            });
+        </script>
     </body>
 </html>
