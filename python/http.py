@@ -19,14 +19,12 @@ class HTTP(object):
             setattr(cls, name, make_get(name))
 
 
-    def __getattribute__(self, name):
+    def __getattr__(self, name):
         '''
         Override regular attribute access to check for existence of the
         attribute. If not, it provides a default GET method by calling class
         method HTTP.get() with the name of the attribute being retrieved.
         '''
 
-        if not hasattr(self, name):
-            HTTP.get(name)
-
-        return super(HTTP, self).__getattribute__(name)
+        HTTP.get(name)
+        return getattr(self, name)

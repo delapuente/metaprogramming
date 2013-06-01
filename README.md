@@ -12,6 +12,9 @@ Please, feel free to do whatever you want with my code.
 
 ## Change log
 
+### 2013/06/01
+  * A new Python example
+
 ### 2012/04/09
  * JavaScript test in [index.html](https://github.com/lodr/metaprogramming/tree/master/javascript/index.html)
  * JavaScript examples
